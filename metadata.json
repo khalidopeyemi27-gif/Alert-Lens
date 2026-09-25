@@ -1,0 +1,8 @@
+{
+  "name": "Alert Lens NG",
+  "description": "Analyse suspicious messages, links, job offers, and online content, understand the warning signs, verify safely, and know what to do next.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
