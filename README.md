@@ -10,7 +10,7 @@ A digital safety and decision-support layer for suspicious messages, links, and 
 
 **Alert Lens NG** is a digital safety layer designed to protect users from digital fraud, phishing, impersonation, and online scams. Rather than acting as a passive classification tool or a generic AI chatbot, Alert Lens intervenes at the critical moment of user decision-making. 
 
-It analyzes incoming messages, detects what the message is asking the user to do (Scam Procedure Detection), calculates safety bounds (ALLOW / WARN / BLOCK), intercepts risky link navigation through controlled interstitials, guides users through independent verification outside the message, and educates users through interactive safety tutorials.
+It analyzes messages, links, and online offers submitted by the user, detects what the message is asking the user to do (Scam Procedure Detection), calculates safety bounds (ALLOW / WARN / BLOCK), intercepts risky link navigation through controlled interstitials, guides users through independent verification outside the message, and educates users through interactive safety tutorials.
 
 ### Core Product Positioning
 Alert Lens is built on a 5-stage digital protection framework:
@@ -40,7 +40,7 @@ Digital fraud in Nigeria and globally has evolved rapidly. Scammers deploy highl
 During user research conducted from **August 16–26, 2026** involving **16 interviewees**, key patterns emerged:
 
 ### Qualitative Research Findings
-* **Prevalence**: 100% of interviewees reported encountering suspicious messages or links across platforms.
+* **Customer Discovery Pattern**: 14 of 16 interviewees reported encountering suspicious online activity.
 * **Most Frequent Scam Types**: Phishing links, fake employment offers, investment scams, bank impersonation, and fraudulent online sellers.
 * **Verification Confusion**: Most users reported uncertainty about how or where to verify whether a sender or website was genuine.
 * **Hesitancy to Ask**: Users reported feeling embarrassed or unsure of who to consult when receiving unexpected financial offers.
@@ -48,7 +48,7 @@ During user research conducted from **August 16–26, 2026** involving **16 inte
 > **One Interviewee's Reported Experience:**
 > An interviewee described receiving a referral link from a friend for a "make more money" website. They deposited ₦5,000 into the platform, after which the platform requested an additional ₦2,000 fee before allowing any funds to be withdrawn.
 
-*(Note: Qualitative interview findings represent individual reported experiences and are documented as customer evidence, not general population statistics.)*
+*(Note: Qualitative interview findings represent individual reported experiences from customer discovery and are documented as customer evidence, not general population prevalence statistics.)*
 
 ---
 
@@ -57,7 +57,7 @@ During user research conducted from **August 16–26, 2026** involving **16 inte
 Alert Lens was created based on three fundamental insights:
 1. **Safety at the Point of Action**: Telling users a message is "suspicious" is insufficient. Safety tools must intercept the exact action requested (e.g., clicking a link, sharing an OTP, paying a fee).
 2. **The Golden Safety Rule**: *Never verify a suspicious message using contact details, links, or phone numbers provided inside that message.* Verification must always occur through independently sourced official channels.
-3. **No Account Barriers**: Digital safety tools must be frictionless and immediately accessible without requiring user sign-up or login.
+3. **No mandatory account creation**: Users can analyze content without signing up or logging in.
 
 ---
 
@@ -67,31 +67,30 @@ Alert Lens processes suspicious content through a multi-layered safety architect
 
 ```
 [ Input Message / Link / Offer ]
-               │
-               ▼
-   [ 1. Message Analysis Engine ] ◄── (Gemini AI API + Heuristic Fallback)
-               │
-               ▼
-  [ 2. Warning Sign Detection ]  ──► (Identifies specific red flags with evidence)
-               │
-               ▼
- [ 3. Scam Procedure Detector ]  ──► (Maps requested actions: OTP, BVN, Login, Fee)
-               │
-               ▼
-  [ 4. URL Intelligence Engine ] ──► (Domain evaluation, TLD check, Homographs)
-               │
-               ▼
- [ 5. Protection Decision System] ──► (ALLOW / WARN / BLOCK)
-               │
-               ├─────────────────────────────────┐
-               ▼                                 ▼
-   [ ProtectedLink Intercept ]     [ Independent Verification ]
-  (Modal blocks high-risk links)  (Context-aware guidance for Orgs)
-               │                                 │
-               └────────────────┬────────────────┘
-                                ▼
-                   [ 6. Interactive Tutorials ]
-                     (8 Guided Learning Modules)
+│
+▼
+[ Message Analysis ]
+│
+▼
+[ Warning Sign Detection ]
+│
+▼
+[ Scam Procedure Detection ]
+│
+▼
+[ URL Intelligence ]
+│
+▼
+[ Protection Decision ]
+ALLOW / WARN / BLOCK
+│
+┌──────┴──────┐
+▼             ▼
+[ ProtectedLink ] [ Independent Verification ]
+│             │
+└──────┬──────┘
+▼
+[ Interactive Tutorials ]
 ```
 
 ---
@@ -105,7 +104,7 @@ Analyze messages, links, email text, job postings, or social media offers pasted
 Identifies exactly what the sender is asking you to do (e.g., "Open a link", "Log into account", "Provide BVN", "Enter OTP", "Pay upfront fee") and highlights verbatim evidence snippets supporting each warning sign.
 
 ### 3. 🌐 URL Intelligence System
-Extracts URLs embedded in messages, evaluates domain authenticity against official registry rules, flags suspicious top-level domains (.xyz, .top, .tk), IP hosts, link shorteners, and typosquatted domains.
+Extracts URLs embedded in messages, provides contextual information about less familiar domain extensions alongside other URL signals such as IP hosts, HTTP, Punycode, and domain structure, evaluating domain structure, less familiar domain extensions, IP hosts, HTTP URLs, Punycode/unusual character formatting, tracking parameters, and conservative brand-mismatch signals.
 
 ### 4. 🛡️ Protection Decision & Interstitial Intercept
 Assigns a clear decision (**ALLOW / WARN / BLOCK**). All links rendered in analysis results use `ProtectedLink` and `ProtectionInterstitialModal` to prevent accidental clicks on dangerous URLs.
@@ -130,7 +129,7 @@ An interactive safety assistant that answers follow-up questions specifically gr
 | :--- | :--- | :--- |
 | **Execution** | Fully functional React SPA + Express Server Proxy | Browser Extensions & Native Mobile Apps |
 | **AI Layer** | Server-side Gemini API (`@google/genai`) with offline heuristic rules | On-device lightweight AI models |
-| **Authentication** | Zero-friction, no account required (uses browser localStorage) | Optional cloud backup & sync across devices |
+| **Authentication** | No mandatory account creation (uses browser localStorage) | Optional cloud backup & sync across devices |
 | **Protection** | In-app `ProtectedLink` and `ProtectionInterstitialModal` | System-wide web request interception |
 | **Verification** | Contextual step-by-step guidance & official domain directory | Direct API integration with bank/teleco verification feeds |
 
@@ -205,5 +204,5 @@ For deeper technical and design details, explore the `docs/` folder:
 
 ## 🚦 Project Status
 
-**Prototype Status**: Production-Ready Prototype (v1.0.0).  
-Fully tested and compiled without errors or missing dependencies. Ready for GitHub presentation and portfolio demonstration.
+**Prototype Status**: Working Prototype (v1.0.0).  
+Validated through TypeScript checks, production builds, deterministic safety-logic scenarios, and manual UI testing.
