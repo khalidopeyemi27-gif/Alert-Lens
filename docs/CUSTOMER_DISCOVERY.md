@@ -3,7 +3,7 @@
 > **Research Period**: August 16–26, 2026  
 > **Methodology**: Semi-structured qualitative interviews  
 > **Sample Size**: 16 interviewees  
-> **Target Demographic**: Nigerian students, young professionals, small business owners, and everyday digital consumers across messaging channels.
+> **Target Demographic**: Nigerian students, university applicants, entry-level job seekers, self-employed/small business users, young professionals, and everyday digital consumers.
 
 ---
 
@@ -19,7 +19,7 @@ The goal of this customer discovery study was to understand:
 
 ## 💡 Key Findings & Reported Encounters
 
-All 16 interviewees reported encountering digital fraud or suspicious online offers across one or more digital communication channels:
+Interviewees reported encountering suspicious digital communications and online offers across multiple digital channels:
 
 ### Common Threat Scenarios Encountered
 * **Phishing & Suspicious Web Links**: Unsolicited shortened URLs distributed via SMS or WhatsApp promising rewards, airtime, or account updates.
@@ -37,13 +37,13 @@ All 16 interviewees reported encountering digital fraud or suspicious online off
 
 Through cross-interview synthesis, seven recurring friction points were identified:
 
-1. **Scams Look Convincing**: High-fidelity logos, formal tone, official-sounding names, and spoofed sender IDs make fraudulent messages nearly indistinguishable from legitimate communications.
-2. **Lack of Warning-Sign Recognition**: Users frequently do not know which specific indicators signal risk (e.g., mismatched TLDs, requests for OTPs/BVN, or pressure tactics).
-3. **Verification Blindness**: Users do not know where or how to independently verify whether a company, offer, or portal is genuine.
-4. **The "Inside-the-Message" Verification Trap**: When in doubt, interviewees reported relying on links, email addresses, or phone numbers provided *inside* the suspicious message itself to ask if it was real.
-5. **Limited Technical Knowledge**: Technical concepts like domain WHOIS, SSL certificates, or TLD analysis are unknown or inaccessible to most everyday users.
-6. **Technical Jargon Confusion**: Existing cybersecurity advisories or antivirus warnings use terms like "Phishing Heuristic" or "Spoofed MX Record", which users find confusing or unhelpful.
-7. **Uncertainty & Embarrassment**: Users expressed hesitation about asking friends or authorities for help when they received unexpected money offers, fearing judgment or missing out on a opportunity.
+1. **Scams Look Convincing**: Interviewees noted that high-fidelity logos, formal tone, official-sounding names, and spoofed sender IDs made fraudulent messages difficult to distinguish from legitimate communications.
+2. **Lack of Warning-Sign Recognition**: Participants described uncertainty regarding which specific indicators signal risk (e.g., mismatched domain extensions, requests for OTPs/BVN, or pressure tactics).
+3. **Verification Blindness**: Several interviewees expressed uncertainty about where or how to independently verify whether a company, offer, or portal was genuine.
+4. **The "Inside-the-Message" Verification Trap**: When feeling hesitation, interviewees reported relying on links, email addresses, or phone numbers provided *inside* the suspicious message itself to attempt verification.
+5. **Limited Technical Knowledge**: Interviewees described technical concepts like domain registry records or domain extensions as unfamiliar or inaccessible.
+6. **Technical Jargon Confusion**: Participants reported that technical security terms (e.g., "Phishing Heuristic") caused confusion rather than providing clear guidance.
+7. **Uncertainty & Embarrassment**: Participants expressed hesitation about consulting others when receiving unexpected financial offers, citing fear of judgment or missing out on an opportunity.
 
 ---
 
@@ -61,20 +61,20 @@ During an in-depth interview, one participant shared their experience responding
 * **Outcome**: The interviewee recognized the second request as suspicious, refused the second payment, and lost the initial ₦5,000.
 
 ### Analysis of the Interruption
-This case study highlighted a critical product requirement for Alert Lens:
-> Scammers rely on multi-step procedures (Deposit → Escalated Fee → Account Lock). **Alert Lens must explicitly break down the requested procedure** (`ScamProcedureCard`) so users see all requested steps *before* taking the first step.
+This case study highlighted a critical product design requirement for Alert Lens:
+> Scammers rely on multi-step procedures (Deposit → Escalated Fee → Account Lock). **Alert Lens was designed to explicitly break down requested procedures** (`ScamProcedureCard`) so users see all requested steps *before* taking the first step.
 
 ---
 
-## 🎯 How Research Findings Shaped Alert Lens NG
+## 🎯 How Research Findings Informed Alert Lens NG Design
 
-| Customer Discovery Finding | Product Feature Implemented in Alert Lens |
+| Qualitative Research Finding | Product Response / Feature Design |
 | :--- | :--- |
-| Users fall into the "Inside-the-Message" verification trap | **Independent Verification Guidance** explicitly instructs users to verify through official, outside channels. |
-| Users don't know what warning signs to look for | **Warning Sign Detection** highlights exact evidence snippets in plain language. |
-| Scammers request multi-step actions (OTPs, fees, logins) | **Scam Procedure Detection** lists every requested sensitive action upfront. |
-| Users open links impulsively when excited or rushed | **ProtectedLink & Interstitial Modal** force a safe pause before visiting unknown external links. |
-| Users lack cybersecurity knowledge | **Interactive Safety Tutorials** teach proactive scam recognition through 8 real-world scenarios. |
+| Interviewees reported verifying through details inside the message | **Independent Verification Guidance** explicitly instructs users to verify through official, outside channels. |
+| Participants described difficulty identifying technical warning signs | **Warning Sign Detection** highlights exact evidence snippets in plain language. |
+| Interviewees described multi-step requests (OTPs, fees, logins) | **Scam Procedure Detection** lists every requested sensitive action upfront. |
+| Participants reported clicking links quickly when presented with urgent offers | **ProtectedLink & Interstitial Modal** force a safe pause before visiting unknown external links. |
+| Interviewees described unfamiliarity with cybersecurity terminology | **Interactive Safety Tutorials** teach proactive scam recognition through 8 real-world scenarios. |
 
 ---
 

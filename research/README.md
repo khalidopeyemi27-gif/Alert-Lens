@@ -12,42 +12,38 @@ The qualitative research phase evaluated how users interact with unsolicited dig
 
 ### Interviewee Profile Overview
 * **Sample Size**: 16 participants.
-* **Demographics**: Students, university applicants, entry-level job seekers, self-employed traders, and young professionals.
+* **Demographics**: Nigerian students, university applicants, entry-level job seekers, self-employed traders, and young professionals.
 * **Primary Digital Channels**: WhatsApp, SMS, Gmail, Instagram Direct, Facebook Messenger.
 
 ---
 
 ## 🧠 Core Synthesis: User Mental Models & Deception Vulnerability
 
-### 1. The Urgency & Emotional Trigger Effect
-Scammers manipulate cognitive bias by introducing tight time constraints ("Offer expires in 1 hour") or financial excitement ("Bursary awarded"). Under elevated emotion, users bypass reflective analysis and move directly to requested actions.
+### 1. Emotional and Time Pressure
+Interviewees described responding hastily when messages combined urgency ("Offer expires in 1 hour") or financial incentives ("Bursary awarded"), leading to rapid action before reflective verification.
 
 ### 2. The Credibility Illusion
-Users heavily rely on surface-level visual cues (logos, formal tone, "official" headers) rather than technical indicators (domain names, TLDs, SSL origins). If a message *looks* like a bank message, users treat it as a bank message.
+Participants reported relying heavily on surface-level visual cues (logos, formal tone, official headers) rather than technical indicators (domain names, domain extensions). When a message closely mimicked official corporate branding, interviewees reported initially treating it as genuine.
 
 ### 3. The "Inside-the-Message" Trap
-When users feel slight hesitation, their default verification attempt is to:
-* Click the link inside the message to read more.
-* Call the phone number listed inside the SMS.
-* Reply directly to the sender.
-This keeps the user within the attacker's controlled environment.
+When experiencing hesitation, interviewees described attempting to verify messages by clicking internal links, calling numbers listed within the text, or replying directly to the sender—keeping them within the sender's communication loop.
 
-### 4. Fear of Technical Jargon
-Security warnings containing terms like "Heuristic Anomaly" or "Certificate Mismatch" induce anxiety or indifference. Users ignore warnings they do not understand.
+### 4. Technical Jargon Barrier
+Participants reported that technical security terms (e.g., "Heuristic Anomaly") caused confusion or detachment, leading them to ignore warnings they did not understand.
 
 ---
 
-## 🔄 Translating Research Insights into Alert Lens NG
+## 🔄 Translating Research Insights into Alert Lens NG Feature Design
 
 ```
 ┌──────────────────────────────────────────┬──────────────────────────────────────────┐
-│ Qualitative Research Insight             │ Alert Lens Feature Implementation        │
+│ Qualitative Research Finding             │ Alert Lens Feature Design Response       │
 ├──────────────────────────────────────────┼──────────────────────────────────────────┤
-│ Scams demand immediate action            │ ScamProcedureCard extracts all requested │
-│ (login, OTP, BVN, fee)                   │ sensitive actions upfront                │
+│ Interviewees described multi-step        │ ScamProcedureCard extracts all requested │
+│ sensitive requests (login, OTP, BVN, fee)│ sensitive actions upfront                │
 ├──────────────────────────────────────────┼──────────────────────────────────────────┤
-│ Users verify using details inside message │ Independent Verification Guidance       │
-│                                          │ enforces outside verification channels   │
+│ Participants reported verifying using    │ Independent Verification Guidance        │
+│ details inside the message               │ enforces outside verification channels   │
 ├──────────────────────────────────────────┼──────────────────────────────────────────┤
 │ Impulse clicking on risky links          │ ProtectedLink & ProtectionInterstitial   │
 │                                          │ force a safe pause before visiting URLs  │
@@ -55,10 +51,17 @@ Security warnings containing terms like "Heuristic Anomaly" or "Certificate Mism
 │ Technical warnings cause confusion       │ Plain-language warning explanations with │
 │                                          │ verbatim evidence quotes                 │
 ├──────────────────────────────────────────┼──────────────────────────────────────────┤
-│ Lack of warning-sign knowledge           │ 8 Interactive Safety Tutorials teaching  │
+│ Difficulty recognizing warning signs     │ 8 Interactive Safety Tutorials teaching  │
 │                                          │ scenario-based scam recognition          │
 └──────────────────────────────────────────┴──────────────────────────────────────────┘
 ```
+
+---
+
+## 📌 Methodological Disclaimers
+
+* Findings documented in this summary reflect qualitative user evidence gathered during 16 semi-structured interviews in August 2026.
+* Data presented describes user behaviors, mental models, and reported experiences from qualitative customer discovery; it does not constitute general statistical prevalence across the entire population.
 
 ---
 
