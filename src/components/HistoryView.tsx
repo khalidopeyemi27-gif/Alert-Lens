@@ -111,7 +111,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({
                       ) : (
                         <ShieldCheck className="w-3 h-3" />
                       )}
-                      <span>{item.riskLevel} ({item.riskScore}/100)</span>
+                      <span>{item.riskLevel}</span>
                     </span>
 
                     {/* Category */}

@@ -262,7 +262,7 @@ export const AnalysisResultView: React.FC<AnalysisResultViewProps> = ({ result, 
 
   const copySummaryText = `Alert Lens NG Assessment:
 Risk Category: ${result.threatCategory || 'Uncategorized'}
-Preliminary Risk Indicator: ${result.riskScore}/100 (${riskHeadline})
+Preliminary Risk Indicator: ${riskBadge.label} (${riskHeadline})
 Summary: ${result.summary}
 
 Primary Action:
@@ -279,7 +279,7 @@ This is a preliminary AI-assisted assessment, not legal or forensic proof. Alert
 
   const whatsAppShareText = `Alert Lens preliminary safety assessment:
 Risk Category: ${result.threatCategory || 'Suspicious Content'}
-Preliminary Risk Indicator: ${result.riskScore}/100 (${riskHeadline})
+Preliminary Risk Indicator: ${riskBadge.label} (${riskHeadline})
 Primary Action: ${primaryAction.title}
 
 Warning Signs Detected (${warningSignsCount}):
@@ -339,22 +339,23 @@ Checked with Alert Lens NG`;
         {/* Risk Score & Risk Badge Top Area */}
         <div className={`p-6 sm:p-7 ${riskBadge.bg} border-b border-[#D9E2EC]`}>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
-            {/* Left: Dial Meter + Badge + Summary */}
+            {/* Left: Visual Shield + Badge + Summary */}
             <div className="flex items-start gap-4">
-              {/* Dial Meter (0 to 100) */}
+              {/* Visual Focus Shield */}
               <div className="relative w-20 h-20 shrink-0 flex items-center justify-center rounded-2xl bg-white shadow-2xs border border-[#D9E2EC]">
                 {/* Visual Lens Focus Ring */}
                 <div
                   className="absolute inset-1 rounded-xl border-2 pointer-events-none opacity-80"
                   style={{ borderColor: riskBadge.accent }}
                 />
-                <div className="text-center z-10">
-                  <span className="text-2xl font-black tracking-tight" style={{ color: riskBadge.accent }}>
-                    {result.riskScore}
-                  </span>
-                  <span className="text-[10px] block font-bold text-[#667085] uppercase tracking-wider">
-                    / 100
-                  </span>
+                <div className="text-center z-10 flex items-center justify-center">
+                  {result.riskLevel === 'CRITICAL' || result.riskLevel === 'HIGH' ? (
+                    <ShieldAlert className="w-9 h-9" style={{ color: riskBadge.accent }} />
+                  ) : result.riskLevel === 'MEDIUM' ? (
+                    <AlertTriangle className="w-9 h-9" style={{ color: riskBadge.accent }} />
+                  ) : (
+                    <ShieldCheck className="w-9 h-9" style={{ color: riskBadge.accent }} />
+                  )}
                 </div>
               </div>
 
@@ -379,7 +380,7 @@ Checked with Alert Lens NG`;
             {/* Right: Preliminary Risk Indicator */}
             <div className="sm:text-right shrink-0">
               <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-white border border-[#D9E2EC] text-[#344054] shadow-2xs">
-                Preliminary Risk Indicator: <strong>{result.riskScore}/100</strong>
+                Preliminary Risk Indicator: <strong>{riskBadge.label}</strong>
               </span>
               <p className="text-[10px] text-[#667085] mt-1 max-w-[200px]">
                 Preliminary risk assessment. Requires independent verification.
@@ -870,7 +871,7 @@ Checked with Alert Lens NG`;
                     threatCategory: result.threatCategory,
                     riskLevel: result.riskLevel,
                     riskScore: result.riskScore,
-                    preliminaryRiskIndicator: `${result.riskScore}/100`,
+                    preliminaryRiskIndicator: riskBadge.label,
                     warningSignsCount: warningSignsCount,
                     redFlags: result.redFlags,
                     exactEvidence: result.evidence,

@@ -48,7 +48,7 @@ I have directly linked the active assessment for this ${
             ? ` claiming to be from ${context.organizationCheck.detectedOrgName}`
             : ''
         }.
-• Preliminary Risk Indicator: ${context.preliminaryRiskIndicator || `${context.riskScore || 0}/100`}
+• Preliminary Risk Indicator: ${context.preliminaryRiskIndicator || context.riskLevel || 'Preliminary Risk Indicator'}
 • Warning signs detected: ${context.warningSignsCount ?? (context.redFlags?.length || 0)}
 • Primary action advised: ${context.primaryAction || 'Verify through independent official channels'}
 

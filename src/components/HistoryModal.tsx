@@ -92,7 +92,7 @@ export const HistoryModal: React.FC<HistoryModalProps> = ({
                             : 'bg-emerald-50 text-[#159570] border-emerald-200'
                         }`}
                       >
-                        {item.riskLevel} ({item.riskScore}/100)
+                        {item.riskLevel}
                       </span>
                       <span className="text-[11px] font-bold text-[#0B1220]">
                         {item.threatCategory}
